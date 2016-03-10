@@ -1,0 +1,4 @@
+*.swp
+*.sqlite
+docs/_build
+/phpunit.phar
