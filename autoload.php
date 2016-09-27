@@ -1,6 +1,5 @@
 <?php
-
-function __autoload($class_name) {
+function jamburaAutoload($class_name) {
     if (preg_match('/^Model_/', $class_name)) {
         // class is a model 
         $filename = preg_replace('/^Model_/', '', $class_name).EXT;

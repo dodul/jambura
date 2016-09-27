@@ -1,12 +1,11 @@
 <?php
-
-# FIXME: Set environment: can be set as development or production. 
-# in production environment, no error will be displayed.
-#
 #
 # include configuration: include configuration file, containing 
 # database access info and all.
 include('configurations.php');
+include('autoload.php');
+# Register autoloader
+spl_autoload_register('jamburaAutoload');
 #
 # define Paths
 define('JAMBURA_CORE', 'applications/core/');
