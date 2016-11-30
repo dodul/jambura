@@ -1,7 +1,7 @@
 <?php
 class jController {
     protected $loadTemplate = true;
-    protected $template = 'v2';
+    protected $template = 'default';
     protected $cache = null;
     protected $data = array();
 
