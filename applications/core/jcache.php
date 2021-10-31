@@ -25,7 +25,7 @@ class jCache {
    *
    * @var string
    */
-  private $_cachepath = 'cache/';
+  private $_cachepath = '/tmp/';
 
   /**
    * The name of the default cache file
