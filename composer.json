@@ -1,0 +1,6 @@
+{
+    "require": {
+	"filp/whoops": "2.14.4",
+	"lavary/crunz": "2.3.1"
+    }
+}

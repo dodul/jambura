@@ -825,6 +825,15 @@
         }
 
         /**
+         * Add a subquery or expression to the columns returned
+         * by the SELECT query. The second optional argument is
+         * the alias to return the column as.
+         */
+        public function select_sub($expr, $alias=null) {
+            return $this->_add_result_column("($expr)", $alias);
+        }
+
+        /**
          * Add columns to the list of columns returned by the SELECT
          * query. This defaults to '*'. Many columns can be supplied
          * as either an array or as a list of parameters to the method.

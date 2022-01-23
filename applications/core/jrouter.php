@@ -37,18 +37,14 @@ class jRouter
 
     public static function showErrorPage($page, \Exception $e, $forceErrorReport = false) {
         Logger::error($e->getMessage());
-        if (JAMBURA_MOD == 'DEV' || $forceErrorReport) {
-            echo '<h3>Exception: '.get_class($e).'</h3>';
-            echo '<h2>'.$e->getMessage().'</h2>';
-            echo '<h3>File: '.$e->getFile().' on line '.$e->getLine().'</h3>';
-            $traces = $e->getTrace();
-            $i = 0;
-            foreach($traces as $trace) {
-                echo '<br/>#'.$i++.' ';
-                echo 'File :'.$trace['file'].' on line '.$trace['line'].'<br/>';
-                echo $trace['class'].$trace['type'].$trace['function']
-                    .(isset($trace['args']) ? '('.implode(' ,', $trace['args']).')<br />' : '');
-            }
+	if (JAMBURA_MOD == 'DEV' || $forceErrorReport) {
+            $whoops = new \Whoops\Run;
+            $whoops->allowQuit(false);
+            $whoops->writeToOutput(false);
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+            $html = $whoops->handleException($e);
+
+            echo $html;
             return;
         }
 
@@ -64,12 +60,5 @@ class jRouter
         } else {
             include($page);
         }
-    }
-
-    public static function showInMaintenancePage()
-    {
-        $_GET['controller'] = 'error';
-        $_GET['action'] = 'inmaintenance';
-        (new jRouter())->route()->display();
     }
 }
