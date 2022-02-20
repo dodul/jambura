@@ -8,7 +8,7 @@ include('autoload.php');
 spl_autoload_register('jamburaAutoload');
 #
 # define Paths
-define('JAMBURA_CORE', 'applications/core/');
+define('JAMBURA_CORE', 'vendor/dodul/jambura-core');
 define('JAMBURA_MODS', 'applications/models/');
 define('JAMBURA_CONTROLLERS', 'applications/controllers/');
 define('JAMBURA_VIEWS', 'applications/views/');
