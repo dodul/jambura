@@ -1,7 +1,8 @@
 <?php
 class jController {
     protected $loadTemplate = true;
-    protected $template     = 'v2';
+    protected $template     = DEFAULT_TEMPLATE;
+    protected $layout       = DEFAULT_LAYOUT;
     protected $cache        = null;
     protected $data         = array();
 
@@ -71,11 +72,11 @@ class jController {
 	        extract($variables);
           ob_start();
           if ($this->loadTemplate) {
-		          include(JAMBURA_TEMPLATES.$this->template.'/header.php');
+		          include(JAMBURA_TEMPLATES.$this->template.'/layouts/'.$this->layout.'/header.php');
 	        }
           include JAMBURA_VIEWS.$view.'.php';
           if ($this->loadTemplate) {
-		          include(JAMBURA_TEMPLATES.$this->template.'/footer.php');
+		          include(JAMBURA_TEMPLATES.$this->template.'/layouts/'.$this->layout.'/footer.php');
 	        }
           $renderedView = ob_get_clean();
           echo $renderedView;
