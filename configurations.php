@@ -1,13 +1,21 @@
 <?php
-define('ROOT', '');
-define('DB_SERVER', 'localhost');
-define('DB_SERVER_USERNAME', 'root');
-define('DB_SERVER_PASSWORD', '');
-define('DB_NAME', '');
-define('DEFAULT_TEMPLATE', 'default');
-define('DEFAULT_LAYOUT', 'default');
-define('DEFAULT_PAGE', 'welcome');
-
-// Environment
-
-define('EXT', '.php');
+$config = [
+    'database' => [
+        'host' => 'localhost',
+        'db' => '',
+        'user' => '',
+        'pass' => ''
+    ],
+    'directories' => [
+        'models' => 'applications/models/',
+        'controllers' => 'applications/controllers/',
+        'views' => 'applications/views/',
+        'classes' => 'applications/classes/',
+        'templates' => 'templates/'
+    ],
+    'view' => [
+        'default_template' => 'default',
+        'default_layout' => 'default',
+        'default_page' => 'welcome'
+    ]
+];

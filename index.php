@@ -3,19 +3,18 @@
 # include configuration: include configuration file, containing 
 # database access info and all.
 include('configurations.php');
+include('Jambura.php');
+
+Jambura::app()->setConfig($config);
+
 include('autoload.php');
 # Register autoloader
 spl_autoload_register('jamburaAutoload');
 #
 # define Paths
 define('JAMBURA_CORE', 'vendor/dodul/jambura-core');
-define('JAMBURA_MODS', 'applications/models/');
-define('JAMBURA_CONTROLLERS', 'applications/controllers/');
-define('JAMBURA_VIEWS', 'applications/views/');
 define('JAMBURA_VENDORS', 'applications/vendors/');
-define('JAMBURA_CLASSES', 'applications/classes/');
-define('JAMBURA_TEMPLATES', 'templates/');
-define('JAMBURA_MOD', 'PROD');
+define('JAMBURA_MOD', 'PORD');
 #
 # include all required php libraries.
 # include third party libraries
@@ -35,7 +34,7 @@ ORM::configure('password', DB_SERVER_PASSWORD);
 # or action is not found.
 #
 try {
-    (new jRouter())->route()->display();
+    Jambura::app()->routeRequest()->respond();
 } catch (Exception $e) {
     if (JAMBURA_MOD == 'DEV') {
         echo $e->getMessage().'<br>';
